@@ -1,0 +1,27 @@
+Table sessions
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| session_id    | varchar(100) | YES  |     | NULL    |       | 
+| ip_address    | varchar(30)  | YES  |     | NULL    |       | 
+| user_agent    | varchar(200) | YES  |     | NULL    |       | 
+| user_data     | text         | YES  |     | NULL    |       | 
+| last_activity | datetime     | YES  |     | NULL    |       | 
++---------------+--------------+------+-----+---------+-------+
+
+
+Table user
+
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int(11)      | NO   | PRI | NULL    | auto_increment | 
+| login         | varchar(100) | YES  |     | NULL    |                | 
+| password      | varchar(100) | YES  |     | NULL    |                | 
+| email         | varchar(100) | YES  |     | NULL    |                | 
+| register_date | datetime     | YES  |     | NULL    |                | 
+| status        | int(1)       | YES  |     | NULL    |                | 
+| roll          | int(2)       | YES  |     | NULL    |                | 
+| last_activity | datetime     | YES  |     | NULL    |                | 
++---------------+--------------+------+-----+---------+----------------+
+

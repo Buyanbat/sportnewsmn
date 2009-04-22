@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -11,7 +13,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/sportnewsmn";
+$config['base_url']	= "http://10.0.0.174/sportnewsmn/";
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +90,7 @@ $config['charset'] = "UTF-8";
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 
 /*
@@ -238,7 +240,7 @@ $config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'sessions';
 $config['sess_match_ip']		= TRUE;
 $config['sess_match_useragent']	= TRUE;
-$config['sess_time_to_update'] 	= 300;
+$config['sess_time_to_update'] 	= 100;
 
 /*
 |--------------------------------------------------------------------------
@@ -323,6 +325,32 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| FCKEditor Basepath
+|--------------------------------------------------------------------------
+|
+| The path from your site's root in which the fckeditor folder is. Note
+| this is from the site's root, not the file system root. Also note the
+| required slashes at start and finish.
+|
+|    e.g. /fckeditor/ or /system/plugins/fckeditor/  etc...
+|
+*/
+$config['fckeditor_basepath']    = "/system/plugins/fckeditor/";
+
+/*
+|--------------------------------------------------------------------------
+| FCKEditor Toolbar Set Default
+|--------------------------------------------------------------------------
+|
+| The default Toolbar set to be used for FCKEditor across your site. Leave
+| as empty string or comment out if your happy enough with the standard
+| default.
+|
+*/
+$config['fckeditor_toolbarset_default'] = 'Default'; 
 
 
 /* End of file config.php */

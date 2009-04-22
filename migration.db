@@ -1,27 +1,445 @@
-Table sessions
-+---------------+--------------+------+-----+---------+-------+
-| Field         | Type         | Null | Key | Default | Extra |
-+---------------+--------------+------+-----+---------+-------+
-| session_id    | varchar(100) | YES  |     | NULL    |       | 
-| ip_address    | varchar(30)  | YES  |     | NULL    |       | 
-| user_agent    | varchar(200) | YES  |     | NULL    |       | 
-| user_data     | text         | YES  |     | NULL    |       | 
-| last_activity | datetime     | YES  |     | NULL    |       | 
-+---------------+--------------+------+-----+---------+-------+
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: sport
+-- ------------------------------------------------------
+-- Server version	5.0.67-0ubuntu6
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-Table user
+--
+-- Table structure for table `comments`
+--
 
-+---------------+--------------+------+-----+---------+----------------+
-| Field         | Type         | Null | Key | Default | Extra          |
-+---------------+--------------+------+-----+---------+----------------+
-| id            | int(11)      | NO   | PRI | NULL    | auto_increment | 
-| login         | varchar(100) | YES  |     | NULL    |                | 
-| password      | varchar(100) | YES  |     | NULL    |                | 
-| email         | varchar(100) | YES  |     | NULL    |                | 
-| register_date | datetime     | YES  |     | NULL    |                | 
-| status        | int(1)       | YES  |     | NULL    |                | 
-| roll          | int(2)       | YES  |     | NULL    |                | 
-| last_activity | datetime     | YES  |     | NULL    |                | 
-+---------------+--------------+------+-----+---------+----------------+
+DROP TABLE IF EXISTS `comments`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `news_id` int(11) default NULL,
+  `data` text,
+  `created_at` datetime default NULL,
+  `up` int(11) default NULL,
+  `down` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
 
+--
+-- Dumping data for table `comments`
+--
+
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,1,1,'<p>Энэ бол эхний сэтгэгдэл юм.</p>','2009-04-17 10:19:24',0,0),(2,1,1,'<p>Энэ бол 2 дахь сэтгэгдэл</p>','2009-04-17 10:20:08',0,0),(3,1,1,'<p>qweqweqwe</p>','2009-04-17 10:48:59',0,0),(4,1,1,'<p>wrwerwerwer<img src=\"http://localhost/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/wink_smile.gif\" alt=\"\" /></p>\n<p>&nbsp;</p>','2009-04-17 10:49:09',0,0),(5,1,1,'<p>qweqwe<strong>asdasdasdqweqw<span style=\"color: rgb(51, 102, 255);\">asdasdasdasd</span></strong></p>','2009-04-17 10:49:24',0,0),(6,1,1,'<p>asdasdasdasdasdasdasdasd<em>asdasdqweqweqwe<strong>asdasdasdasd</strong></em></p>','2009-04-17 10:49:38',0,0),(7,1,1,'<p>qwe</p>\n<p>asd</p>\n<p>asd</p>\n<p>asd</p>\n<p>asd</p>\n<p>as</p>\n<p>da</p>\n<p>sd</p>\n<p>asd</p>\n<p>&nbsp;</p>','2009-04-17 13:19:17',0,0),(8,1,1,'<p>aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>','2009-04-17 14:33:25',0,0),(9,1,1,'<p>qwweqweq</p>','2009-04-17 15:36:28',0,0),(10,1,2,'<p>Леброн MVP</p>','2009-04-17 18:17:52',0,0),(11,1,2,'<p style=\"text-align: center;\">Амгаа гахай <strong>БҮДҮҮН<img src=\"http://localhost/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/devil_smile.gif\" alt=\"\" />&reg;</strong></p>','2009-04-17 18:28:50',0,0),(12,1,3,'<p>qwerty gej </p>','2009-04-17 18:37:57',0,0),(13,1,3,'<p>Гино матар</p>','2009-04-17 18:39:59',0,0),(14,1,3,'<p style=\"text-align: center;\">фцуфцуфцуфцуфцу</p>','2009-04-17 18:40:24',0,0),(15,1,2,'<p>asdasdqweqweqweasdasd</p>','2009-04-17 20:03:33',0,0),(16,1,2,'<p>qwweeqqqqqweqweqwe</p>','2009-04-17 20:05:10',0,0),(17,1,3,'<p>Be</p>','2009-04-20 13:15:01',0,0),(18,1,1,'','2009-04-20 13:30:24',0,0),(19,1,1,'','2009-04-20 13:30:25',0,0),(20,1,3,'<p>asdasd</p>','2009-04-20 16:55:59',0,0),(21,1,4,'<p>Денвер түрүүлнээ</p>','2009-04-20 19:54:57',0,0),(22,1,1,'<p>CD бол суга Д.... гэсэн үг</p>','2009-04-21 16:53:35',0,0);
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `f_player`
+--
+
+DROP TABLE IF EXISTS `f_player`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `f_player` (
+  `id` int(11) NOT NULL auto_increment,
+  `team_id` int(11) default NULL,
+  `name` varchar(200) default NULL,
+  `country` varchar(100) default NULL,
+  `body` text,
+  `jersey` varchar(100) default NULL,
+  `photo` varchar(100) default NULL,
+  `created_at` datetime default NULL,
+  `author_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `f_player`
+--
+
+LOCK TABLES `f_player` WRITE;
+/*!40000 ALTER TABLE `f_player` DISABLE KEYS */;
+INSERT INTO `f_player` VALUES (1,1,'Fernando Torres','Англи','Супер довтлогч','http://localhost/sportnewsmn//images/top_right1.jpg','http://localhost/sportnewsmn//images/rails5.png','2009-03-30 15:39:47',1);
+/*!40000 ALTER TABLE `f_player` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `f_team`
+--
+
+DROP TABLE IF EXISTS `f_team`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `f_team` (
+  `id` int(11) NOT NULL auto_increment,
+  `country` varchar(100) default NULL,
+  `body` text,
+  `logo` varchar(100) default NULL,
+  `t_id` int(11) default NULL,
+  `name` varchar(200) default NULL,
+  `league_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `f_team`
+--
+
+LOCK TABLES `f_team` WRITE;
+/*!40000 ALTER TABLE `f_team` DISABLE KEYS */;
+INSERT INTO `f_team` VALUES (1,'Англи','<p><span style=\"color: rgb(51, 102, 255);\"><strong>Цэнхэрүүд </strong></span>манайхтай 16д таарсан.</p>\n<ul>\n    <li>Лампард</li>\n    <li>Терри</li>\n    <li>Чех</li>\n    <table cellspacing=\"1\" cellpadding=\"1\" border=\"1\" width=\"200\">\n        <caption>Тоглолтууд</caption>\n        <tbody>\n            <tr>\n                <td style=\"text-align: center;\">Тоглолт</td>\n                <td style=\"text-align: center;\">Хожил</td>\n                <td style=\"text-align: center;\">Тэнцээ</td>\n                <td style=\"text-align: center;\">Хожигдол</td>\n                <td style=\"text-align: center;\">Оноо</td>\n            </tr>\n            <tr>\n                <td style=\"text-align: center;\">20</td>\n                <td style=\"text-align: center;\">123</td>\n                <td style=\"text-align: center;\">123</td>\n                <td style=\"text-align: center;\">1</td>\n                <td style=\"text-align: center;\">1</td>\n            </tr>\n            <tr>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">&nbsp;</td>\n                <td style=\"text-align: center;\">йыб</td>\n            </tr>\n            <tr>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">&nbsp;</td>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">йыб</td>\n            </tr>\n            <tr>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">йыб</td>\n                <td style=\"text-align: center;\">&nbsp;</td>\n                <td style=\"text-align: center;\">йыб</td>\n            </tr>\n        </tbody>\n    </table>\n    <li style=\"text-align: center;\">&nbsp;</li>\n</ul>\n<p>&nbsp;</p>','http://localhost/sportnewsmn//images/tb_underline_down2.gif',NULL,'Chelsea',1);
+/*!40000 ALTER TABLE `f_team` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum`
+--
+
+DROP TABLE IF EXISTS `forum`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `forum` (
+  `id` int(11) NOT NULL auto_increment,
+  `question` text,
+  `description` text,
+  `user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `cat_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `forum`
+--
+
+LOCK TABLES `forum` WRITE;
+/*!40000 ALTER TABLE `forum` DISABLE KEYS */;
+INSERT INTO `forum` VALUES (1,NULL,'<p>Энэ бол тест йыбйыб<span style=\"color: rgb(255, 102, 0);\">йыбйыбйыб<strong>энэ бол тест</strong></span></p>',1,'2009-03-31 15:18:31',NULL),(2,'Энэ бол тест','<p><strong>Энэ бол тест шүү. This is Test <span style=\"color: rgb(128, 0, 0);\">asdasd</span></strong></p>',1,'2009-03-31 15:19:36',NULL),(3,'<?=$current_user->login?>','<p>&lt;?=$current_user-&gt;email?&gt;</p>',1,'2009-03-31 15:26:20',NULL),(4,'<?=$current_user->login?>','<p>echo $current_user-&gt;email</p>',1,'2009-03-31 15:27:25',NULL),(5,'ганзо Сугыг яах вэ?','<p>Цаадах чинь үнэн суга юмаа? <strong>Яаагаад ийм суга болдог байнаа</strong></p>\n<table cellspacing=\"1\" cellpadding=\"1\" border=\"1\" width=\"200\">\n    <tbody>\n        <tr>\n            <td>йыб</td>\n            <td>йыбйы</td>\n        </tr>\n        <tr>\n            <td>йыбй</td>\n            <td>ййй</td>\n        </tr>\n        <tr>\n            <td>ыыы</td>\n            <td>бббб</td>\n        </tr>\n    </tbody>\n</table>\n<p>&nbsp;</p>',1,'2009-03-31 16:25:10',NULL),(6,'Suga Norton','<p>asddddddddddddddddddd</p>',1,'2009-04-13 16:06:06',NULL);
+/*!40000 ALTER TABLE `forum` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_category`
+--
+
+DROP TABLE IF EXISTS `forum_category`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `forum_category` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(200) default NULL,
+  `description` text,
+  `user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `forum_category`
+--
+
+LOCK TABLES `forum_category` WRITE;
+/*!40000 ALTER TABLE `forum_category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `forum_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_reply`
+--
+
+DROP TABLE IF EXISTS `forum_reply`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `forum_reply` (
+  `id` int(11) NOT NULL auto_increment,
+  `reply_id` int(11) default '0',
+  `forum_id` int(11) default NULL,
+  `body` text,
+  `user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `up` int(11) default '0',
+  `down` int(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `forum_reply`
+--
+
+LOCK TABLES `forum_reply` WRITE;
+/*!40000 ALTER TABLE `forum_reply` DISABLE KEYS */;
+INSERT INTO `forum_reply` VALUES (1,0,2,'<p>aaaaaaaaaaa</p>',1,'2009-04-06 19:32:08',1,1),(2,0,2,'<p>За энэ тестийн хариулт</p>',1,'2009-04-06 19:34:23',1,1),(3,0,2,'<ol>\n    <li>asd</li>\n    <li>asd</li>\n    <li>asd</li>\n    <li>das</li>\n    <li>asd</li>\n    <li>dsa</li>\n</ol>\n<p>da</p>\n<p>ad</p>\n<p>d</p>\n<p>d</p>\n<p>ad</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>asd</p>\n<p>as</p>\n<p>d</p>\n<p>as</p>\n<p>da</p>\n<p>sd</p>',1,'2009-04-07 14:18:31',1,1),(4,2,2,'<p>ййыбйыбйыбйыбфуфуф</p>',1,'2009-04-07 14:40:31',0,0),(5,3,2,'<p>ЙЫбйыбййыбйыбйыбйыбйыбйыбйыбйыбйыб</p>',1,'2009-04-10 17:19:31',1,1),(6,0,2,'<p>йыхабйыабрйабрхйаройыаобр</p>',1,'2009-04-10 17:19:49',1,1),(7,2,2,'<p>saaaadasdasdasdasd</p>',1,'2009-04-10 19:56:27',1,0),(8,2,2,'<p>asdasdasdasdqqqqeeq<img src=\"http://10.0.0.174/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/wink_smile.gif\" alt=\"\" /></p>',1,'2009-04-10 20:00:34',0,0),(9,3,2,'<p>qweqqqqqqqqqqqasdasd</p>',1,'2009-04-10 20:02:50',1,1),(10,0,2,'<p>This is Complete Forum</p>',1,'2009-04-10 20:06:28',1,1),(11,0,2,'<p>aaaaaaaaaaaaaaaaaaasdasd<strong>asdasdasdqaa<img src=\"http://10.0.0.174/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/shades_smile.gif\" alt=\"\" /><img src=\"http://10.0.0.174/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/confused_smile.gif\" alt=\"\" /><img src=\"http://10.0.0.174/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/lightbulb.gif\" alt=\"\" /><img src=\"http://10.0.0.174/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/kiss.gif\" alt=\"\" /><span style=\"color: rgb(255, 153, 0);\"> this is Orange &Iuml;<sub>1<sup>3</sup></sub><sup>1</sup></span></strong></p>',1,'2009-04-10 20:07:26',1,1),(12,2,2,'<p>sdf<img src=\"http://localhost/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/wink_smile.gif\" alt=\"\" /><img src=\"http://localhost/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/lightbulb.gif\" alt=\"\" /></p>',1,'2009-04-11 11:50:49',0,0),(13,0,3,'<p>qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</p>',1,'2009-04-11 12:21:43',1,0),(14,0,3,'<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>',1,'2009-04-11 12:21:56',1,0),(15,14,3,'<p>qqqqqqqqqqqqqqqqqwwwwwwwwwwwww</p>',1,'2009-04-11 12:22:58',0,0),(16,2,2,'<p>Суга Нортон Тогтох<img src=\"http://localhost/sportnewsmn/system/plugins/fckeditor/editor/images/smiley/msn/devil_smile.gif\" alt=\"\" /></p>',1,'2009-04-11 15:09:57',1,1),(17,3,2,'<ol>\n    <li style=\"text-align: justify;\"><span style=\"background-color: rgb(255, 153, 0);\">aaaaaasdasqwe<span style=\"color: rgb(255, 102, 0);\"><span style=\"color: rgb(255, 0, 0);\">aaaaaaaassaqweqwqasd</span></span></span></li>\n    <li style=\"text-align: justify;\"><span style=\"background-color: rgb(255, 153, 0);\"><span style=\"color: rgb(255, 102, 0);\"><span style=\"color: rgb(255, 0, 0);\">222313123</span></span></span></li>\n    <li style=\"text-align: justify;\"><span style=\"background-color: rgb(255, 153, 0);\"><span style=\"color: rgb(255, 102, 0);\"><span style=\"color: rgb(255, 0, 0);\">asdasdasdwqeqweqweqewrwe</span></span></span></li>\n    <li style=\"text-align: justify;\"><span style=\"background-color: rgb(255, 153, 0);\"><span style=\"color: rgb(255, 102, 0);\"><span style=\"color: rgb(255, 0, 0);\"><span style=\"background-color: rgb(204, 153, 255);\">aaaaaaaaaaaaaaaaaaaaaaa</span></span></span></span></li>\n    <li style=\"text-align: justify;\"><span style=\"background-color: rgb(255, 153, 0);\"><span style=\"color: rgb(255, 102, 0);\"><span style=\"color: rgb(255, 0, 0);\"><span style=\"background-color: rgb(204, 153, 255);\">wwwwwwwwwwwwwwwwwww</span></span></span></span></li>\n</ol>',1,'2009-04-11 15:26:24',1,1),(18,0,2,'<p>aaaaaaaaaaaaaaaaaaaasssswqeqwe</p>',1,'2009-04-13 10:58:32',1,1),(19,2,2,'<p>asdasd</p>',1,'2009-04-13 11:04:00',0,0),(20,0,2,'<p>sss</p>',1,'2009-04-13 11:04:13',1,1),(21,1,2,'<p>aswqeqweqwe</p>',1,'2009-04-13 11:11:43',1,0),(22,1,2,'<p>notice shalgaj bna</p>\n<p>&nbsp;</p>',1,'2009-04-13 11:12:26',0,0),(23,1,2,'<p>ssss</p>',1,'2009-04-13 11:15:02',0,0),(24,1,2,'<p>ssssss</p>',1,'2009-04-13 11:15:40',0,0),(25,1,2,'<p>asdasdas</p>',1,'2009-04-13 11:28:02',0,0),(26,1,2,'<p>qweqweqweq</p>',1,'2009-04-13 11:28:32',1,0),(27,1,2,'<p>qweqweqweqqqq</p>',1,'2009-04-13 11:28:48',0,0),(28,1,2,'<p>wwwwwwwwwwwwwwwwwwwwwww</p>',1,'2009-04-13 11:28:55',0,0),(29,1,2,'<p>qqqqqqqqqqqq</p>',1,'2009-04-13 11:40:33',0,0),(30,0,6,'<p>Veugg</p>',1,'2009-04-13 16:06:14',0,0),(31,30,6,'<p>ssss</p>',1,'2009-04-13 17:07:06',0,0),(32,30,6,'<p>qqqqq</p>',1,'2009-04-13 17:07:15',1,0),(33,1,2,'<p>qqqqqq</p>',1,'2009-04-13 19:06:14',0,0),(34,1,2,'<p>qwweqweqwe</p>',1,'2009-04-15 10:36:28',0,0),(35,20,2,'<p>5455454545</p>',1,'2009-04-17 17:52:07',0,0),(36,1,2,'<p>Суга</p>',1,'2009-04-21 16:54:39',0,0);
+/*!40000 ALTER TABLE `forum_reply` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `forum_reply_score`
+--
+
+DROP TABLE IF EXISTS `forum_reply_score`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `forum_reply_score` (
+  `id` int(20) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `func` int(11) default NULL,
+  `reply_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `forum_reply_score`
+--
+
+LOCK TABLES `forum_reply_score` WRITE;
+/*!40000 ALTER TABLE `forum_reply_score` DISABLE KEYS */;
+INSERT INTO `forum_reply_score` VALUES (1,1,1,1,'2009-04-10 17:15:55'),(2,1,2,1,'2009-04-10 17:15:56'),(3,1,1,2,'2009-04-10 17:16:04'),(4,1,2,2,'2009-04-10 17:16:10'),(5,1,1,3,'2009-04-10 17:16:12'),(6,1,2,3,'2009-04-10 17:16:13'),(7,1,1,6,'2009-04-10 17:20:23'),(8,1,2,6,'2009-04-10 18:30:21'),(9,1,1,7,'2009-04-10 19:56:41'),(10,1,1,5,'2009-04-10 20:03:04'),(11,1,1,9,'2009-04-10 20:10:03'),(12,1,2,9,'2009-04-10 20:10:07'),(13,1,2,5,'2009-04-10 20:10:20'),(14,1,1,14,'2009-04-11 12:22:44'),(15,1,1,13,'2009-04-11 13:23:31'),(16,1,1,10,'2009-04-11 15:27:24'),(17,1,2,10,'2009-04-11 15:27:27'),(18,1,1,11,'2009-04-11 15:29:59'),(19,1,2,16,'2009-04-11 18:46:39'),(20,1,1,16,'2009-04-11 18:46:44'),(21,1,2,11,'2009-04-11 18:47:15'),(22,1,2,17,'2009-04-11 18:47:18'),(23,1,1,17,'2009-04-11 18:47:19'),(24,1,1,18,'2009-04-13 11:04:26'),(25,1,1,20,'2009-04-13 11:04:28'),(26,1,2,18,'2009-04-13 11:04:30'),(27,1,2,20,'2009-04-13 11:04:30'),(28,1,1,32,'2009-04-13 17:08:16'),(29,1,1,26,'2009-04-17 17:51:52'),(30,1,1,21,'2009-04-21 16:54:34');
+/*!40000 ALTER TABLE `forum_reply_score` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `game`
+--
+
+DROP TABLE IF EXISTS `game`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `game` (
+  `id` int(11) NOT NULL auto_increment,
+  `link` varchar(200) default NULL,
+  `user_id` int(11) default NULL,
+  `status` int(11) default NULL,
+  `game_day` datetime default NULL,
+  `created_at` datetime default NULL,
+  `type_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `game`
+--
+
+LOCK TABLES `game` WRITE;
+/*!40000 ALTER TABLE `game` DISABLE KEYS */;
+/*!40000 ALTER TABLE `game` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `league`
+--
+
+DROP TABLE IF EXISTS `league`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `league` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(200) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `league`
+--
+
+LOCK TABLES `league` WRITE;
+/*!40000 ALTER TABLE `league` DISABLE KEYS */;
+INSERT INTO `league` VALUES (1,'Premier League'),(2,'La liga'),(3,'Serie A');
+/*!40000 ALTER TABLE `league` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news`
+--
+
+DROP TABLE IF EXISTS `news`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(250) default NULL,
+  `description` text,
+  `body` text,
+  `status` int(1) default NULL,
+  `user_id` int(11) default NULL,
+  `viewed` int(11) default NULL,
+  `up` int(11) default NULL,
+  `down` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `type_id` int(1) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `news`
+--
+
+LOCK TABLES `news` WRITE;
+/*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (1,'Hillsborough - The Pain Lingers 20 Years On ','Goal.com\'s Ewan Macdonald looks back at the Hillsborough disaster, which claimed the lives of 96 Liverpool fans twenty years ago today..','<p>Leppings Lane. Open the gates. Hillsborough. Say these words to any British football fan old enough to have viewed television on April 15th 1989 and you will receive in response, at the very least, a brief flinch. For once the images were seen, and seen live, they were never to be forgotten. These words, and these twitchy reactions, are the shibboleths of the worst football disaster of these islands in modern times. <br />\n<br />\nThe UK has an unhappy history of such tragedies, but none, perhaps, have haunted the imagination quite as much as that of Hillsborough. Nothing proves this more than the name itself. There is the aforementioned Valley Parade fire; there is the Ibrox disaster; and then there is Hillsborough. To Hillsborough, \'disaster\' is an encumbrance. Hillsborough has become a noun to indicate not just a stadium, but a tragedy. <br />\n<br />\n96 dead, 300 hospitalised, hundreds more injured - and countless lives changed forever. <br />\n<br />\n<b>What Happened? </b><br />\n<br />\nLiverpool were drawn against Nottingham Forest in the FA Cup semi-final, a match traditionally held at a neutral venue. Hillsborough, being a vast and (it was said) a relatively well-appointed arena in the north, it seemed to the Football Association to be an ideal venue for the cup semis. 1989 was no exception, as the Reds and Forest prepared to meet on April 15th. <br />\n<br />\nWithout going into exhaustive detail - such matters deserve more examination than I can give here, and the existing unofficial literature on the topic is extensive - \'bottlenecking\' upon entry to the stadium, high fencing around the pitch, a lack of rescue coordination from ground-level police and the failure of the match commander to act in a manner commensurate with the seriousness of the situation saw overcrowding take place in the Leppings Lane end \'pens\'. In essence, those who perished died of injuries borne of being crushed, as well as asphyxiation. <br />\n<br />\nThe old style of stadium was roundly criticised in the aftermath for being a factor in the disaster, but it took a while for the handling of the situation to come under similar scrutiny. Indeed, as we\'ll see, it is perhaps the herding in of fans that was as much to blame as anything else. <br />\n<br />\n<b>Pointing Fingers </b><br />\n<br />\nThe pictures of the disaster, broadcast live on the BBC, not only touched the nation but also shocked it, angered it. People wanted answers. This very human indignation, though, was not always channelled correctly. <em>The Sun</em>, one of the country\'s most influential and popular tabloids, capitalised on the disaster with one of the two most infamous front pages in its history. Editor Kelvin McKenzie gleefully recounted a litany of crimes committed by \'some\' fans: attacking aid workers; robbing the dead and the drying; urinating on the police. The mood of the decade, one of stringent (and often justified) anti-hooliganism, was no doubt the motivation for these populist screams, but McKenzie had sorely misjudged his audience. <br />\n<br />\nIn fact, people were - for the most part, at least - far more interested in establishing a cause for the disaster, rather than gleefully rejoicing in alleged misbehaviour of \'some\' fans. In any case, it later transpired that the allegations on the front page were perhaps one degree short of being complete and utter fiction, leaving the smirking, amoral figure of McKenzie with no option but to apologise. <br />\n<br />\n(Years later, once the dust had settled, this squalid little coward once again displayed his true colours by sneering that he only apologised under duress, and that he was and is not sorry - he was just going on what he\'d been told by a Conservative politician, who had been backed up by South Yorkshire\'s chief superintendent David Duckenfield, a man whose role in the tragedy will perhaps never be fully established, but whose initial dishonesty certainly has been. As for McKenzie, to this day his old newspaper remains barely circulated in Liverpool.) <br />\n<br />\nEnough of him. He\'s had the attention that he craves. Anyway, he wasn\'t the only one to blame the fans. <br />\n<br />\n<b>Asking Questions </b><br />\n<br />\nInitial police briefings, notes Phil Scraton, an academic who has extensively studied the disaster, were considerably and shamelessly \'revised\', with initial statements heavily doctored in what must be assumed to be an attempt to cover tracks. It\'s easy to see why. Both official documents and a host of off-the-record police statements ran the gamut of fan blame, ranging from accusations of a vast conspiracy of fans to enter without tickets (in fact tickets were, despite officially being sold out on Merseyside, not hard to come by) or to invade the pitch (in fact the fence came down and the fans came streaming on in an attempt to escape death and injury.) <br />\n<br />\nIt took a while for these things to be established - in part, that is, for the true facts of the matter are still not 100% clear - and the police seemed to always be second to ascertain the facts... and to change their own. Even the much-lauded Taylor Report knew of these alterations, which slightly takes the shine off its condemning some aspects of the policing for the \'lack of control\' on matchday. <br />\n<br />\nThe early clamour to blame the supporters, and to see the spectre of hooliganism behind every fan\'s eyes, was quietly shuffled aside. Instead, the blame went pretty much nowhere. Taylor\'s muted condemnation aside, individuals were not brought to task for their role in the tragedy, and the (more significant) institutional failures in South Yorkshire were discussed with no small measure of opacity. (The British citizen today may wish to draw comparisons between this incident and the official reactions to the death of a bypasser in the London demonstrations earlier this month.) <br />\n<br />\n<b>Changed Forever </b><br />\n<br />\nNot just were lives irrevocably altered - and ruined - by the tragedy, but the sport as a whole saw the change, too. The abundance of all-seater stadia that followed the Taylor Report was the first and most obvious departure with the old; numerous more followed. I leave the examination of those to my Goal.com colleague, Zack Wilson, to reflect on in his excellent article <a href=\"http://www.goal.com/en/news/9/england/2009/04/15/1208469/hillsborough-long-term-lessons-still-being-learned\">here</a>. <br />\n<br />\nIn the meantime, football will share a moment today reflecting on the 96 lives lost. It will do so not just in sadness, but also confusion and anger. The beautiful game should not - and, had things gone differently, could not - have been so hideous.</p>',1,1,0,0,0,'2009-04-15 20:01:01',0),(2,'Шагнал, Шагнал, Шагнал','ҮСБХ-ны улирлын тоглолтууд дууслаа. Улаанбаатарын цагаар Ням гаригт плей-оффын тоглолтууд эхэлнэ. Аль баг аварга болох вэ гэдгийг ярилцахаасаа өмнө хэн хэн улирлын шагналуудыг хүртэх бол гэдгийг таамаглацгаая.','<p>Кобигийн хувьд энэ улирал мөн л сайхан болж байна. Тэр 30 насыг давсан ч тоглолт нь сайн хэвээрээ, урьдын адил гялалзсаар. Гэхдээ MVP-г Коби энэ улиралд авахгүй, өөрөөр хэлбэл ЛеБроны өмнө гишгэж чадахгүй л болов уу. Тэглээ гээд Кобид сэтгэлээр унах шалтгаан байхгүй, тэр зөвхөн аваргын бөгж л бодож байгаа. Коби өмнө нь 3 аваргалахад Шакын нэр л түрүүнд дурсагддаг байсан тул Коби Шакгүйгээр аварга болох бодлыг 5 жил тээж явна. Өнгөрсөн зун Лейкерс Бостонд ялагдсаны дараа Шак нэгэн баранд &ldquo;Коби надгүйгээр аварга авч чадсангүй&rdquo; гээд райм хийж байсан түүхтэй.</p>\n<p>Крис Пол гэмтэл бэртлээр дүүрэн Нью-Орлеансаа чирсээр плей-оффт багтаасан. Хэрэв Хорнетсийн тоглогчид бүтэн улирлын турш гэмтэл бэртлээс хол байсан бол багийнх нь амжилт илүү байх байсан байх. Пол лигийг оновчтой дамжуулалт, бөмбөг таслалтаар тэргүүлээд, оноогоор эхний 10-т орсон анхны тоглогч болсон. Мөн 1974 оноос хойш лигийг оновчтой дамжуулалт, бөмбөг таслалтаар зэрэг тэргүүлсэн 5 дахь тоглогч нь болсон. Хэрэв Пол улирлын сүүлийн тоглолтоо Спэрстэй хийхдээ 39 оноо авч чадсан бол (26 оноо авсан) нэг улиралд дунджаар 23-аас дээш оноо, 11-ээс дээш оновчтой дамжуулалт дундчилсан лигийн түүхэн дэх 4 дэх тоглогч болж, Оскар Робертсон, Мэжик Жонсон, Тини Арчиальд нартай нарын эгнээнд бичигдэх байсан. Энэ мэтээр Пол лигийн түүхэнд бичигдэх амжилтуудыг үзүүлсээр, үзүүлэх дөхсөөр л явна.</p>\n<p>Энэ улиралд &nbsp;түүний хамтрагчид сайн байгаагүй. Чандлер, Пежа нар гэмтэлтэйгээ зууралдсаар, Жеймс Пози өөрийгөө өнгөрсөн зуны хамгийн оверрэйтэд наймааны эзэн хэмээн хэлэгдэхээр муу тоглож байсан бөгөөд Дэвид Уэст л түүнд хань болж байсан. Гэвч Хорнетс өрсөлдөөн ширүүн Өрнөд бүсэд бараг л 50 ялсан нь Полын л ач. Тиймээс Пол улирлын үнэ цэнтэй тоглогчид дээгүүр өрсөлдөх байх. Гэхдээ л шагнал авч чадахгүй. Уг нь Нэш эхний удаа MVP авахдаа 15.5 оноо, 11.5 оновчтой дамжуулалт, дараагийн удаа авахдаа 18.9 оноо, 10.5 оновчтой дамжуулалт дунджаар хийж байж. Тухайн улиралд Коби дунджаар 35 оноо авч байсан ч Нэш MVP болсон. Харин Полын энэ улирлын статистик нь 22.8 оноо, 11 оновчтой дамжуулалт, дээр нь нэмээд 2.8 бөмбөг таслалт. Тэгэхээр MVP-д багийн амжилтыг ихээхэн хардаг нь харагдаж байна.</p>\n<p>Эргээд ЛеБроны тухай. &nbsp;ЛеБроныг хойш нь татах ганц үзүүлэлт байна. Кавальерс энэ улиралд лигийн бусад 3 топ баг болох Лейкерс, Мэжик, Селтиксийн эсрэг 8 тоглохдоо 6-д нь хожигдсон тал бий. Гэхдээ л үүнийг мартацгаая. Энэ жилийн &ldquo;MVP&rdquo; бол ЛеБрон Жеймс. Үүнд эргэлзэх хэрэггүй.</p>\n<p><strong>ШИЛДЭГ ШИНЭ ТОГЛОГЧ</strong></p>\n<p><strong>Дерик Роүз</strong><strong>, </strong><strong>Чикаго Буллз</strong></p>\n<p>Өнгөрсөн жил драфтын өмнө Роүз, Бисли нарын хэн нэг нь драфтыг тэргүүлэх нь тодорхой гэж яригдаж байсан. Буллзыг драфтын 1 номерын сонголт хийх үед би Кирк Хайнрич, Бен Гордон гээд залуу, авьяаслаг хамгаалагчид байгаа учир хамгаалагчийн байрлалын Роүз хэрэггүй байх, харин довтлогчоор тоглодог, өндөр, олон талын тоглолттой Бисли зөв сонголт болов уу гэж бодож байсан. &nbsp;Миний бодол буруу, Чикагогийн сонголт зөв байсныг энэ улирал харууллаа. Энэ улирлын шинэчүүлээс Өү.Жей.Майо, Руссел Вестбрук, Брук Лопес, Кевин Лав, Ерик Гордон нар багийнхаа гол тоглогчид болцгоосон ч дээрх тоглогчдын багууд дандаа хомоол хамсан гэхэд болно. Харин Роүзийн Буллз плей-оффт шалгарлаа. Энэ амжилтанд Роүзийн үүрэг их бөгөөд тэрээр хамгийн хэцүү буюу холбон тоглогчийн байрлалд сайн тоглож байна. Дээр нь 16.6 оноо, 6.2 оновчтой дамжуулалт, 47.2 хувийн оновчтой довтолгоо гэсэн статистик үзүүлэлттэй. Майо хэдий түүнээс олон (18.3) оноо авдаг ч Мемфис энэ улиралд ердөө 24 хожсон тул яавч Роүзтэй зэрэгцэхгүй.</p>\n<p>Роүзд сул талууд байгаа л даа, мэдээж. Тэр хамгаалалтандаа анхаарах хэрэгтэй, талбай дээр зөв шийдвэр гаргахад сайн суралцах ёстой, мөн 3 онооны шидэлт хийж сурах хэрэгтэй. Гэхдээ л шинэ тоглогчийн хувьд одоохондоо Роүзийн тоглолт хангалттай. Тэр энэ улирлын шилдэг шинэ тоглогч.</p>\n<p><strong>ШИЛДЭГ 6 ДАХЬ ТОГЛОГЧ</strong></p>\n<p><strong>Жейсон Терри, Даллас Маверикс</strong></p>\n<p>Энэ улирлын шилдэг 6 дахь тоглогч мөн л Техасаас тодрох бололтой. Өнгөрсөн улиралд Спэрсийн Ману Жинобили энэ шагналыг авч байсан бол энэ улиралд Далласын Жейсон Терри авах байх.</p>\n<p>Хэдийгээр гэмтлээс болж 8 тоглолт өнжсөн ч Терри Далласын 2 дахь шилдэг тоглогчийн үүргээ улирлын турш хангалттай биелүүлсэн. Девин Харрис явж, Жош Ховард олон тоглолт өнжсөн тул Террид энэ үүрэг ноогдохоос өөр аргагүй. &nbsp;&nbsp;Тэрээр энэ улиралд нэг тоглолтонд дунджаар 33.6 минут тоглосон нь багтаа 3-т орох үзүүлэлт. Мөн нэг тоглолтонд 15.8 удаа довтолж байсан нь өнгөрсөн улирлаас 3.5-аар их, кареерийн дунджаас нь 2.5-аар их байв. Далласт Дирк Новицки л түүнээс олон шидэлт хийдэг. Дундаж оноо нь 19.5 бөгөөд энэ нь Атлантад байсан 2001 оны үеийнхээс хойшхи хамгийн өндөр үзүүлэлт. Багийнх нь амжилт ч муугүй, улирлын төгсгөлийг сайн хийж, зөвхөн плей-оффын эрхийн төлөө тоглож байсан баг бүсдээ 6-д бичигдэж чадсан. Терри оны шилдэг нөөц тоглогч.</p>\n<p>Денверийн Жи.Ар.Смитийн нэр яригдаж байгаа ч тэр өнөөдөр 40 оноо аваад, маргааш 4 оноо авах тогтворгүй тоглолт үзүүлж байсан.</p>\n<p>Нэйт Робинсоны хувьд багийнх нь амжилт муу, Трэвис Оутлавын хувийн үзүүлэлтүүд арай муу гээд Территэй өрсөлдөх хүн байхгүй байх аа.</p>\n<br />',1,1,0,0,0,'2009-04-17 18:16:46',1),(3,'Гино матар','Амгаа гахайгийн ард суудаг Гино матрын талаар','<p>Гино матар</p>',1,1,0,0,0,'2009-04-17 18:32:02',1),(4,'Лейкерс, Филадельфи, Атланта, Денвер яллаа','NBA PlayOff ийн 2 дахь өдрийн тоглолтуудын үр дүн.','<p><em>Өрнөд конференц</em>\n<p>Эхний тоглолт</p>\n<p><strong> &ldquo;Лейкерс&rdquo; - &ldquo;Юта&rdquo; - 113:100 (30:19, 32:21, 24:33, 27:27)</strong></p>\n<p><strong>Л: </strong>Брайант (24 + 8 дамжуулалт), Ариза (21), П. Газоль (20 + 9 самбар), Одом (13 + 8 самбар).</p>\n<p><strong>Ю:</strong> Бузер (27 + 9 самбар), Дэр. Уильямс (16 + 17 дамжуулалт), Миллсэп (15 + 8 самбар), Кириленко (8 + 8 самбар).</p>\n<p>Цувралын харьцаа: 1-0.</p>\n<p>Энэ жилийн аваргын хамгийн том нэр дэвшигч Лейкерс талбайдаа эхний тоглолтоо хийн эхний хагаст 22 онооны давамгайлал олж аван ялалт байгууллаа. Дерон Уильямс хэдийгээр 17 оновчтой дамжуулалт хийн өөрийн плей-оффын рекордоо тогтоосон ч энэ нь тус болсонгүй.</p>\n<p><em>Дорнод конференц</em></p>\n<p><strong> &ldquo;Орландо&rdquo; - &ldquo;Филадельфи&rdquo; - 98:100 (25:27, 25:19, 29:19, 19:35)</strong></p>\n<p><strong>О:</strong> Дуайт Ховард (31+16 самбар), К. Ли (18), Р. Льюис</p>\n<p>Ф: Игуодала (20+8 самбар+8 дамжуулалт), Л. Уильямс (18), А. Миллер (15+7 самбар+7 дамжуулалт).</p>\n<p>Цувралын харьцаа: 0-1.</p>\n<p>Плей-оффын 15 дахь тоглолтоо хийж буй Дуайт Ховард хэдийгээр 31 оноо аван плей-оффын хувийн дээд амжилтайй тогтоосон боловч тоглолтын цаг дуусахад 2,2 секунд дутуу байхад Андре Игуодала ялалтын бөмбөг хийснээр 76 чухал хожлоо авлаа.</p>\n<p><strong>&ldquo;Атланта&rdquo; - &ldquo;Майами&rdquo; - 90:64 (24:21, 35:18, 17:18, 14:7)</strong></p>\n<p><strong>А: </strong>Жош Смит (23+10 самбар), Жо Жонсон (15), Хорфорд (14+9 самбар).</p>\n<p><strong>М:</strong> Уэйд (19+8 бөмбөг алдалт), Бисли (10+10 самбар).</p>\n<p>Цувралын харьцаа: 1-0.</p>\n<p>Тоглолтын 4-р үед хоёр баг 6 минут 42 секундын турш бөмбөг цагаригт хийсэнгүй. Атланта баг 64-хөн оноог Майамид авах боломж олгосон нь багийн плей-оффын рекорд болжээ.</p>\n<p><strong>&ldquo;Денвер&rdquo; - &ldquo;Нью-Орлеан&rdquo; - 113:84 (27:25, 28:22, 32:22, 26:15)</strong></p>\n<p><strong>Д: </strong>Биллапс (36+8 дамжуулалт), Жей. Ар. Смит (19), К. Энтони (13+7 самбар), Клейза (13).</p>\n<p><strong>Н:</strong> К. Пол (21+11 дамжуулалт), Стоякович (13), Дэв. Уэст (12).</p>\n<p>Цувралын харьцаа: 1-0.</p>\n<p>Биллапсын ганцаарчилсан тоглолт ерөнхийдөө болсон гэхэд буруудахгүй байх. Тэр карьерийн дээд амжилт 7 удаа холын зайнаас оруулжээ. Денвер 1985 оноос хойшхи хамгийн хол онооны зөрүүтэй ялалтаа плей-оффийн ялалтаа авав. 1985 онд тэд Сан Антониог 141-111-ээр хожиж байжээ.</p>\n</p>',1,1,0,0,0,'2009-04-20 19:53:11',1),(5,'CD гэж юу вэ?','йыбйыбйыбйыб','<p>фцуфцуфцуйыбйыбйыбйыы</p>',1,1,0,0,0,'2009-04-21 16:52:20',1),(6,'Billups\' shooting display impresses one important fan','DENVER -- NBA commissioner David Stern apparently is allowed to have favorite players. And one guy on his list really gave him his money\'s worth Sunday night.','<div class=\"nbaStoryText\">\n<p><b id=\"nbaOpeningText\">DENVER -- </b>NBA commissioner David Stern apparently is allowed to have favorite players. And one guy on his list really gave him his money\'s worth Sunday night.</p>\n<p>Check that. Stern didn\'t pay for his seat at the Pepsi Center for Game 1 of a West first-round series between Denver and New Orleans. But he sure was given a show by Nuggets point guard Chauncey Billups.</p>\n<p>&quot;Chauncey Billups always has been a favorite of mine,\'\' Stern said before the game. &quot;It\'s fun to watch and read about him being home [in Denver].\'\'</p>\n<p>Billups actually didn\'t know until after the game Stern was on hand, which does mess up the story a little bit about Billups perhaps wanting to light it up in front of the commissioner.</p>\n<!-- REAP --><!--startclickprintexclude-->\n<table align=\"right\">\n    <tbody>\n        <tr>\n            <td>\n            <script type=\"text/javascript\" src=\"http://i.cdn.turner.com/nba/nba/.element/js/1.1/xmp/module.js?vid=/video/channels/playoffs/2009/04/20/nba_noh_den_0040800151_recap2.nba\" id=\"nba_1.40820317402834\"></script>\n            <div id=\"nba_0.40820317402834005\"><iframe height=\"393\" frameborder=\"0\" width=\"388\" scrolling=\"no\" allowtransparency=\"true\" src=\"http://www.nba.com/video/savp1.1/evp.html?vid=/video/channels/playoffs/2009/04/20/nba_noh_den_0040800151_recap2.nba\" id=\"_nba_iframe_0.2261994557914313\"></iframe></div>\n            <noscript>Embedded video from &lt;a href=&quot;http://www.cnn.com/video&quot;&gt;CNN Video&lt;/a&gt;</noscript> </td>\n        </tr>\n    </tbody>\n</table>\n<!--endclickprintexclude--><!-- /REAP -->\n<p>Then again, it was hard to complain about Billups scoring 36 points and hitting a career-high eight 3-pointers (in just nine attempts) in Denver\'s resounding 113-84 win.</p>\n<p>&quot;That\'s an honor,\'\' Billups said when told what Stern said. &quot;He\'s seen every player you can possibly see during his time as commissioner. It\'s an honor for him to say something about that like me. I play the right way. I play for my teammates every single night, not for anybody else.\'\'</p>\n<p>Well, Billups\' teammates needed him to score more than usual Sunday. Both teams got off to a sluggish starts, and the Hornets led by a meager 6-5 as the clock ticked down to under 7:30 left in the first quarter.</p>\n<p>That\'s when Billups took over, making his first three-pointer. Three more followed in the first quarter, and Billups had 16 points for a 27-25 Denver lead.</p>\n<p>Billups\' offense came in quite handy on a night Denver\'s scoring stars struggled. Carmelo Anthony shot just 4-of-12 for 13 points while Nuggets guard J.R. Smith, who had scored a career-high 45 points the previous Monday, had a scoreless first quarter before finishing with 19.</p>\n<p>&quot;It was a pretty good show, man,\'\' Nuggets coach George Karl said of Billups\' outing. &quot;It was a big-time show in playoff basketball.\'\'</p>\n<p>The show reached a peak in the third quarter, when Billups scored 18 points as the Nuggets extended a 55-47 lead to 87-69. Billups shot 4-of-5 from 3-point range in the quarter.</p>\n<p>Had Billups not taken a seat for good with 7:55 left in the game and the Nuggets up 100-71, he almost surely would have broken his playoff mark of 40 points in a game. That was set May 2, 2003 at Orlando, the same night he had made his previous career playoff high of seven 3-pointers (he also has made seven three times in regular-season games).</p>\n<p>But leave it to the modest Billups to want to talk more about defense after the game than his shooting display in front of the commissioner.</p>\n<p>&quot;People are going to talk about how I hit shots, hit threes and the guys kind of rallied around me,\'\' Billups said. &quot;But that was all secondary. Our defense is what really won this game for us.\'\'</p>\n<p>Yes, the Nuggets did hold New Orleans to 37.2 percent shooting, with power forward Kenyon Martin the main reason high-scoring counterpart David West shot just 4-of-16. And, yes, Billups also was strong on defense, one of three players who helped hold Hornets star point guard Chris Paul to 7-of-19 shooting.</p>\n<p>Still, it had to be special for Billups, who shot 10-of-15 overall, to have such an offensive explosion in his first playoff game in his hometown. Unless you\'ve been on an extended safari, you know the Denver native was acquired Nov. 3 from Detroit in a move that turned around the Nuggets\' season.</p>\n<p>&quot;It\'s special, especially for somebody like me that grew up here all my life and rooted for the hometown team all my life,\'\' said Billups, who also played for the Nuggets from 1998-2000, but didn\'t appear in the Playoffs. &quot;For me to have a chance to be playing in the playoffs on a really good team at home, in front of all my family and all my fans, it\'s special. It\'s just a feeling that you have playing at home that not a lot of people get to experience.\'\'</p>\n<p>Regardless of where the game is, not a lot of players shot 8-of-9 on 3-pointers.</p>\n<p>Billups got a number of his 3-pointers holding up on the break, a shot that\'s been a favorite since his high school days in Denver. He also seemed to be salivating when he found Hornets guard Rasual Butler on him to start the game.</p>\n<p>&quot;I think that he felt the matchup with Rasual on him was kind of easy for him to get by when he wanted to,\'\' said New Orleans coach Byron Scott. &quot;Then, when they gave him space, he knocked down threes. So, now you\'re in a catch-22. When he\'s making shots at that rate, it\'s almost impossible to stop him. We\'ve got to do a better job of obviously playing him a little better than we did this game.\'\'</p>\n<p>The Hornets have until Wednesday\'s Game 2 to dust themselves off, and try to figure out how to stop Billups.</p>\n<p>As for Game 2, Stern won\'t be on hand. But you better believe there will plenty of fans at the Pepsi Center who also list Billups as a favorite player.</p>\n</div>',1,1,0,0,0,'2009-04-21 17:35:43',1);
+/*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news_cat`
+--
+
+DROP TABLE IF EXISTS `news_cat`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `news_cat` (
+  `id` int(11) NOT NULL auto_increment,
+  `news_id` int(11) default NULL,
+  `cat_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `news_cat`
+--
+
+LOCK TABLES `news_cat` WRITE;
+/*!40000 ALTER TABLE `news_cat` DISABLE KEYS */;
+INSERT INTO `news_cat` VALUES (1,1,1),(2,1,2),(3,1,3),(4,2,2),(5,2,4),(6,3,2),(7,3,3),(8,4,2),(9,5,3),(10,5,3),(11,6,2);
+/*!40000 ALTER TABLE `news_cat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news_category`
+--
+
+DROP TABLE IF EXISTS `news_category`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `news_category` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(200) default NULL,
+  `user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `news_category`
+--
+
+LOCK TABLES `news_category` WRITE;
+/*!40000 ALTER TABLE `news_category` DISABLE KEYS */;
+INSERT INTO `news_category` VALUES (1,'Football',1,'2009-04-14 18:00:23'),(2,'BasketBall',1,'2009-04-14 18:00:36'),(3,'Tennis',1,'2009-04-14 18:00:41'),(4,'MotoSport',1,'2009-04-14 18:00:51');
+/*!40000 ALTER TABLE `news_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `news_img`
+--
+
+DROP TABLE IF EXISTS `news_img`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `news_img` (
+  `id` int(11) NOT NULL auto_increment,
+  `path` varchar(200) default NULL,
+  `news_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `news_img`
+--
+
+LOCK TABLES `news_img` WRITE;
+/*!40000 ALTER TABLE `news_img` DISABLE KEYS */;
+INSERT INTO `news_img` VALUES (1,'http://localhost/sportnewsmn/images/780769d11d6bcad70a0f7e8ea9a7430d.gif',1),(2,'http://localhost/sportnewsmn/images/8297ace7ee1bb4f9048fb9f5c50310c1.png',1),(3,'http://localhost/sportnewsmn/images/3c3334723f716245ab42ad46805aa2d2.png',1),(4,'http://localhost/sportnewsmn/images/b78f2e5ad8ed85d433c17b447c6552a2.jpg',2),(5,'http://localhost/sportnewsmn/images/fac1abca1768926e54625d6495ee23b1.jpg',2),(6,'http://localhost/sportnewsmn/images/20a8d7f60d2bf6fb8f235996351370d1.jpg',2),(7,'http://localhost/sportnewsmn/images/e23218fe8d7ce02437e34909d12ee5e7.jpg',2),(8,'http://localhost/sportnewsmn/images/7bdd5bf4904bb735784510bc4ea14933.png',3),(9,'http://localhost/sportnewsmn/images/e95b6afd3bfb46230535e52dc4c89f02.png',3),(10,'http://localhost/sportnewsmn/images/ebae4b85b5cfa0fa13e1a85dd32e2382.png',3),(11,'http://localhost/sportnewsmn/images/598fcce6cef487da9bba2e7ef8ef201a.png',3),(12,'http://localhost/sportnewsmn/images/34c57f4afc5672ad88002f0e2467f477.png',3),(13,'http://10.0.0.174/sportnewsmn/images/30a1b877a9a87f91aa01521dddfc95f7.jpg',4),(14,'http://10.0.0.174/sportnewsmn/images/c453c550b1fd879ca66f6eba0bd4faae.png',5),(15,'http://10.0.0.174/sportnewsmn/images/46c6e1db193e899289ba3b100293e457.jpg',6);
+/*!40000 ALTER TABLE `news_img` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sessions`
+--
+
+DROP TABLE IF EXISTS `sessions`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `sessions` (
+  `session_id` varchar(100) default NULL,
+  `ip_address` varchar(30) default NULL,
+  `user_agent` varchar(200) default NULL,
+  `user_data` text,
+  `last_activity` datetime default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `sessions`
+--
+
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+INSERT INTO `sessions` VALUES ('91f25f3ad9d565e85f0563f12baa612a','10.0.0.174','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.3',NULL,'0000-00-00 00:00:00'),('b852f931092d57c50625b8a4658451c9','127.0.0.1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.3',NULL,'0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `login` varchar(100) default NULL,
+  `password` varchar(100) default NULL,
+  `email` varchar(100) default NULL,
+  `register_date` datetime default NULL,
+  `status` int(1) default NULL,
+  `roll` int(2) default NULL,
+  `last_activity` datetime default NULL,
+  `photo` varchar(200) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'buyanbat','8b16ccb48ad9e213b22502a3f0ebe2ef','buyanbat_9001@yahoo.com','2009-03-27 13:58:22',0,3,'2009-04-21 17:35:47','http://10.0.0.174/sportnewsmn/images/nopic.jpg'),(2,'client','ee11cbb19052e40b07aac0ca060c23ee','client@client.com','2009-03-27 17:22:40',0,1,NULL,'http://10.0.0.174/sportnewsmn/images/nopic.jpg');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2009-04-22  6:15:30

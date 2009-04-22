@@ -2,10 +2,14 @@
 <head>
 <title>Register</title>
 <link type="text/css" rel="stylesheet" media="screen" href="<?=base_url()?>/css/style.css">
+<?=js_include("prototype")?>
+<?=js_include("effects")?>
+<?=js_include("dragdrop")?>
+<?=js_include("controls")?>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 </head>
 <body>
-
+		<?include(APPPATH."/views/header.php");?>
 	<h1>Register!</h1>
 		<?php
 			if($error != ''){

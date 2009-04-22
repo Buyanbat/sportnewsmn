@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User extends Controller {
 	var $data;
@@ -14,34 +14,32 @@ class User extends Controller {
 	
 	function index()
 	{
+		$this->db->orderby('register_date','ASC');
 		$this->data['users'] = $this->db->get('user');
 		$this->load->view('user/list',$this->data);
 	}
 	function login()
 	{
-		if($this->current_user === NULL){
+		if($this->current_user == NULL){
 			if(isset($_POST['btn'])){
 				$this->db->where('login',$_POST['login']);
 				$users = $this->db->get('user');
-				if($users->num_rows() === 0)
-				{
+				if($users->num_rows() == 0){
 					$this->userlib->set_error('Логин хийж чадсангүй');
-					redirect(site_url("/user/login"));
+					redirect($_POST['back']);
 				}
-				else
-				{
+				else{
 					$user = $users->row();
-					if($user->password === md5($_POST['password']))
-					{
+					if($user->password == md5($_POST['password'])){
 						$this->session->set_userdata('login',$user->login);
 						$this->session->set_userdata('password',$user->password);
 						$this->userlib->set_notice("Логин амжилттай боллоо");
-						redirect();
+						redirect($_POST['back']);
 					}
 					else 
 					{
 						$this->userlib->set_error("Логин хийж чадсангүй");
-						redirect();
+						redirect($_POST['back']);
 					}
 				}
 			}else {

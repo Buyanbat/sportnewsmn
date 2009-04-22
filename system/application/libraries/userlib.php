@@ -108,8 +108,7 @@ class UserLib
 		$this->object->session->set_flashdata('notice',$msg);
 	}
 	function get_notice(){
-			return  $this->object->session->flashdata('notice');
-		return NULL;
+			return $this->object->session->flashdata('notice');
 	}
 } 
 

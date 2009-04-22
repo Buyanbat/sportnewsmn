@@ -5,7 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 </head>
 <body>
-
+	<?include(APPPATH."/views/header.php");?>
 	<h1>Login!</h1>
 		<?php
 			if($error != ''){

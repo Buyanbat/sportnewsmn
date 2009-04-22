@@ -9,6 +9,13 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
+$hook['post_controller'][] = array(
+																	'class'=>'',
+																	'function'=>'user_auth',
+																	'filename'=>'filter.php',
+																	'filepath'=>'hooks',
+																	'params'=> array()
+																	);
 
 
 
